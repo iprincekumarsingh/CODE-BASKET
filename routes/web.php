@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Opportunities_category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 /*
@@ -17,19 +18,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::get('/home',function(){
-    return view('web.index');
+Route::get('/', function () {
+    return view('auth.login');
 })->name('home');
 
-Route::get('/sub',function(){
-    $email="princekumar2000.pks@gmail.com";
+Route::get('/sub', function () {
+    $email = "princekumar2000.pks@gmail.com";
     $path = '@';
-    $pos= strpos($email,$path);
+    $pos = strpos($email, $path);
     $username = Str::substr($email, 0, $pos);
     return $username;
+});
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/oppur', function () {
+        $oppr = new   Opportunities_category;
+        $oppr->name = "Gsoc";
+        $oppr->cat_photo = "oppurtunities/women.jpg";
+        $oppr->created_by = "Testing  2";
+        $oppr->aid = 203 + 1;
+        $oppr->save();
+        return  response()->json(["Message" => 'success']);
+    });
 });

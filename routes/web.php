@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/home',function(){
+    return view('web.index');
+})->name('home');
+
+Route::get('/sub',function(){
+    $email="princekumar2000.pks@gmail.com";
+    $path = '@';
+    $pos= strpos($email,$path);
+    $username = Str::substr($email, 0, $pos);
+    return $username;
+
 });

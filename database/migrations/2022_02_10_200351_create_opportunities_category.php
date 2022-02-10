@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('op_id');
             $table->string('name');
             $table->string('cat_photo');
+            $table->string('img_name');
             $table->string('created_by');
             $table->string('aid');
             $table->timestamps();

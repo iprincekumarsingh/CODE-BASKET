@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Opportunities_category extends Model
+class ProjectCategory extends Model
 {
     use HasFactory;
-    protected  $table = "opportunities_category";
-    protected $primaryKey = "op_id";
 }

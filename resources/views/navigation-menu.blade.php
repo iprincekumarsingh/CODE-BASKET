@@ -17,6 +17,24 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+                @if (Auth::user()->user_role_type=="admin")
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('oppurtunity_cat.create') }}" :active="request()->routeIs('oppurtunity_cat.create')">
+                        {{ __('Add Category') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('oppurtunity.create') }}"  :active="request()->routeIs('oppurtunity.create')">
+                        {{ __('Create Oppurtunities') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('approval') }}"  :active="request()->routeIs('approval')">
+                        {{ __('Pending Approval') }}
+                    </x-jet-nav-link>
+                </div>
+                @endif
+                
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

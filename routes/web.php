@@ -1,85 +1,65 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\OpportunitiesCategoryController;
+use App\Http\Controllers\OppurtunitiesController;
+use App\Http\Controllers\ProjectController;
+use App\Models\Opportunitie;
 use App\Models\Opportunities_category;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Laravel\Jetstream\Rules\Role;
 
 Route::get('/', function () {
-    return redirect('login');
+    return view('auth.login');
 });
 
-
-Route::get('/sub', function () {
-    $email = "princekumar2000.pks@gmail.com";
-    $path = '@';
-    $pos = strpos($email, $path);
-    $username = Str::substr($email, 0, $pos);
-    return $username;
-});
-
+Route::get('/welcome', [Controller::class, 'home'])->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
 
-
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $catid = Opportunities_category::select('op_id', 'name')->get();
+        $ccuser = User::select('id')->get();
+        $project = Project::select('project_id')->get();
+        $game = Opportunitie::where('op_id', 2)
+            ->select('op_id')->get();
+        $game = count($game);
+        $studentAid = Opportunitie::where('op_id', 3)
+            ->select('op_id')->get();
+        $studentAid = count($studentAid);
+        $approved = Opportunitie::where('approved', 0)
+            ->select('approved')->get();
+        $approved = count($approved);
+        $projectCount = count($project);
+        $userid = count($ccuser);
+        $opp = Opportunitie::select('op_id')->get();
+        $num = count($catid);
+        $num2 = count($opp);
+        return view('dashboard')->with(compact('num', 'num2', 'catid', 'userid', 'projectCount', 'game', 'studentAid', 'approved'));
     })->name('dashboard');
 
-    Route::get('/oppur', function () {
+    // For creating Category for Oppurtunities,
+    Route::get('/add_category', [OpportunitiesCategoryController::class, 'create'])->name('oppurtunity_cat.create');
+    Route::post('/add_category', [OpportunitiesCategoryController::class, 'store'])->name('oppurtunity_cat.store');
+    Route::get('/category_delete/{id}', [OpportunitiesCategoryController::class, 'destroy'])->name('oppurtunity_cat.delete');
+    Route::post('/uloadopr', [OppurtunitiesController::class, 'store'])->name('oppurtunity.store');
 
 
-        return  response()->json(["Message" => 'success', 'session' => session()]);
-    });
-    Route::get('/cat', function () {
-        $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
-            ->where('opportunities_category.aid', '=', session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d'))
-            ->get(['users.email', 'users.name AS Name', 'opportunities_category.name AS Category Name', 'opportunities_category.op_id AS Category ID', 'opportunities_category.cat_photo AS Category Photo']);
-        return response()->json([$oppr]);
-
-    })->name('cat');
-    // REPEAT('*', CHAR_LENGTH(phone) - 6))
-    Route::get('/add', function () {
-        return view('admin.category');
-    })->name('user');
-
-    Route::post('/add', function (Request $request) {
-
-        $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-        $img = $request->file('image');
-        $ext = $img->getClientOriginalExtension();
-        $file_name = time() . '.' . $ext;
-        $img->move('upload/category_img/', $file_name);
-
-        $user = User::select('name')->where('id', session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d'))->value('name');
-
-        $oppr = new   Opportunities_category;
-        $oppr->name = $request['cat_name'];
-        $oppr->cat_photo = "oppurtunities/women.jpg";
-        $oppr->created_by = $user;
-        $oppr->cat_photo = $file_name;
-        $oppr->img_name = $img;
-        $oppr->aid = session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
-        $oppr->save();
-        return to_route('cat');
-    });
+    // Project Controller for uploading project & viewing the project 
+    Route::get('/create', [ProjectController::class, 'store'])->name('project.create');
+    Route::post('/store', [ProjectController::class, 'create'])->name('project.store');
+    Route::get('/oppurtunites', [OppurtunitiesController::class, 'create'])->name('oppurtunity.create');
+    Route::get('/approval', [Controller::class, 'approval'])->name('approval');
 });
-// Route::get('/s',function(){
-//     return session()->all();
-// });
+Route::get('/view_category/{name}/{id}/{ff}/{df}', function ($name, $id, $d, $ss) {
+    $find = Opportunitie::where('op_id', $id)->get();
+    if ($find == null) {
+        echo "No data Found";
+    } else {
 
-ROute::get('/m',function(){
-    echo Str::mask('+56 9 87654321', '*', -8, 6);
+        return response()->json([$find]);
+    }
 });

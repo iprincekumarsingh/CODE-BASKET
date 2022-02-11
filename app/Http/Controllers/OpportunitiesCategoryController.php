@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Opportunities_category;
+
+use function PHPUnit\Framework\isNull;
 
 class OpportunitiesCategoryController extends Controller
 {
@@ -13,7 +17,15 @@ class OpportunitiesCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
+            ->get([
+                'users.email', 'users.name AS name',
+                'opportunities_category.name AS Category_Name',
+                'opportunities_category.op_id AS cat_id',
+                'opportunities_category.cat_photo AS Category_Photo'
+            ]);
+        return view('web.category')
+            ->with(compact('oppr'));
     }
 
     /**
@@ -23,7 +35,14 @@ class OpportunitiesCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
+            ->get([
+                'users.email', 'users.name AS name',
+                'opportunities_category.name AS Category_Name',
+                'opportunities_category.op_id AS cat_id',
+                'opportunities_category.cat_photo AS Category_Photo'
+            ]);
+        return view('admin.category')->with(compact('oppr'));
     }
 
     /**
@@ -34,7 +53,25 @@ class OpportunitiesCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'cat_name' => 'required'
+        ]);
+        $img = $request->file('image');
+        $ext = $img->getClientOriginalExtension();
+        $file_name = time() . '.' . $ext;
+        $img->move('upload/category_img/', $file_name);
+        $user = User::select('name')->where('id', session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d'))
+            ->value('name');
+
+        $oppr = new   Opportunities_category;
+        $oppr->name = $request['cat_name'];;
+        $oppr->created_by = $user;
+        $oppr->cat_photo = $file_name;
+        $oppr->img_name = $img;
+        $oppr->aid = session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+        $oppr->save();
+        return to_route('oppurtunity_cat.create');
     }
 
     /**
@@ -79,6 +116,14 @@ class OpportunitiesCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $oppr = Opportunities_category::where('op_id',$id);
+        $data = Opportunities_category::find($id);
+
+        if ($data == null) {
+            return redirect('/view_category')->with('ID not found');
+        } else {
+            $data->delete();
+            return to_route('oppurtunity_cat.create');
+        }
     }
 }

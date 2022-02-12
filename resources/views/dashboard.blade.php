@@ -22,6 +22,10 @@
             border: 2px solid black;
         }
 
+        .box:hover {
+            background: steelblue;
+        }
+
         .mm {
             border-radius: 10px;
             padding: 30px;
@@ -48,71 +52,75 @@
 
 
     <div class="f">
-
-        <div class="box">
-            <h1>Categoty</h1>
-            <br>
-            <span>{{$num}}</span>
-        </div>
-
-        <div class="box">
-            <h1>Oppurtunities</h1>
-            <br>
-            <div class="mm">
-        <span > {{$num2}}</span>
+        <a href="">
+            <div class="box">
+                <h1>Categoty</h1>
+                <br>
+                <span>{{$num}}</span>
             </div>
 
+        </a>
+        <a href="">
+            <div class="box">
+                <h1>Oppurtunities</h1>
+                <br>
+                <span> {{$num2}}</span>
 
-
-        </div>
-        <div class="box">
-            <h1>Total User Registered</h1>
-            <br>
-            <div class="mm">
-                <span class="">{{$userid}}</span>
             </div>
-        </div>
-        <div class="box">
-            <h1>Total Games</h1>
-            <br>
-            <div class="mm">
-                <span class="" class="mm">{{$game}}</span>
-            </div>
+        </a>
+        <a href="">
 
-        </div>
-        <div class="box">
-            <h1>Women Oppurtunities</h1>
-            <br>
-            <div class="mm">
-                <span class="">{{$userid}}</span>
-            </div>
+            <div class="box">
+                <h1>Total User Registered</h1>
+                <br>
+                <span>{{$userid}}</span>
 
-        </div>
-        <div class="box">
-            <h1>Student`s Aid</h1>
-            <br>
-            <div class="mm">
+            </div>
+        </a>
+        <a href="">
+
+            <div class="box">
+                <h1>Total Games</h1>
+                <br>
+                <span>{{$game}}</span>
+            </div>
+        </a>
+        <a href="">
+
+            <div class="box">
+                <h1>Women Oppurtunities</h1>
+                <br>
+                <span >{{$userid}}</span>
+            </div>
+        </a>
+        <a href="">
+            <div class="box">
+                <h1>Student`s Aid</h1>
+                <br>
+                
                 <span class="">{{$studentAid}}</span>
+                
             </div>
+        </a>
+        <a href="">
 
-        </div>
-        <div class="box">
-            <h1>Total Project`s</h1>
-            <br>
-            <div class="mm">
-                <span class="">{{$projectCount}}</span>
+            <div class="box">
+                <h1>Total Project`s</h1>
+                <br>
+                <span class="">{{$projectCount}}</span>    
             </div>
+        </a>
+<a href="">
 
-        </div>
+    <div class="box">
+        <h1>Approval Pending</h1>
+        <br>
+        
+    </a>
+            <span class="">{{$approved}}</span>
 
-        <div class="box">
-            <h1>Approval Pending</h1>
-            <br>
-            <div class="mm">
-                <span class="">{{$approved}}</span>
-            </div>
 
         </div>
     </div>
-@endif
+    @endif
 </x-app-layout>

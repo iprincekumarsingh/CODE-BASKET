@@ -9,5 +9,5 @@ class Project extends Model
 {
     use HasFactory;
     protected $table = "projects";
-    protected $primaryKey= "project_id";
+    protected $primaryKey = "project_id";
 }

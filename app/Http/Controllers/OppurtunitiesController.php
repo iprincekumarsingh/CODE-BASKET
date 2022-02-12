@@ -27,7 +27,9 @@ class OppurtunitiesController extends Controller
     public function create()
     {
         $data = Opportunities_category::select('name', 'op_id')->get();
-        $cat = Opportunitie::get();
+        $cat = Opportunitie::where('approved', 1)
+            ->orWhere('approved', null)
+            ->get();
 
         return view('admin.oppurtunities')->with(compact('data', 'cat'));
     }
@@ -86,8 +88,25 @@ class OppurtunitiesController extends Controller
      */
     public function show($id)
     {
-        //
     }
+
+    // Approve || disapprove function
+    public function approve($id)
+    {
+        $approve = Opportunitie::find($id);
+        $approve->approved = 1;
+        $approve->save();
+        return to_route('approval');
+    }
+
+    public function disapprove($id)
+    {
+        $approve = Opportunitie::find($id);
+        $approve->approved = 0;
+        $approve->save();
+        return to_route('oppurtunity.create');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -120,6 +139,8 @@ class OppurtunitiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Opportunitie::find($id);
+        $delete->delete();
+        return to_route('oppurtunity.create');
     }
 }

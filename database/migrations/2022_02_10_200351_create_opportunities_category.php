@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('img_name');
             $table->string('created_by');
             $table->string('aid');
+            $table->string('approved')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

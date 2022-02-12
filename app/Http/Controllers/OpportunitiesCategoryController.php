@@ -17,15 +17,15 @@ class OpportunitiesCategoryController extends Controller
      */
     public function index()
     {
-        $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
-            ->get([
-                'users.email', 'users.name AS name',
-                'opportunities_category.name AS Category_Name',
-                'opportunities_category.op_id AS cat_id',
-                'opportunities_category.cat_photo AS Category_Photo'
-            ]);
-        return view('web.category')
-            ->with(compact('oppr'));
+        // $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
+        //     ->get([
+        //         'users.email', 'users.name AS name',
+        //         'opportunities_category.name AS Category_Name',
+        //         'opportunities_category.op_id AS cat_id',
+        //         'opportunities_category.cat_photo AS Category_Photo'
+        //     ]);
+        // return view('web.category')
+        //     ->with(compact('oppr'));
     }
 
     /**
@@ -35,6 +35,7 @@ class OpportunitiesCategoryController extends Controller
      */
     public function create()
     {
+        
         $oppr = User::join('opportunities_category', 'users.id', 'opportunities_category.aid')
             ->get([
                 'users.email', 'users.name AS name',

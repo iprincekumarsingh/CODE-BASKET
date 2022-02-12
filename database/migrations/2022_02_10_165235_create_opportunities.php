@@ -18,16 +18,18 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('link');
-            $table->string('link2');
-            $table->string('link3');
-            $table->string('link4');
+            $table->string('link2')->nullable();
+            $table->string('link3')->nullable();
+            $table->string('link4')->nullable();
             $table->string('post_photo1');
-            $table->string('post_photo2');
-            $table->string('post_photo4');
-            $table->string('post_photo3');
+            $table->string('post_photo2')->nullable();
+            $table->string('post_photo4')->nullable();
+            $table->string('post_photo3')->nullable();
             $table->string('op_id');
             $table->string('aid');
             $table->string('post_id')->unique();
+            $table->string('approved')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

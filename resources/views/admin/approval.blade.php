@@ -25,7 +25,7 @@
                     @endif
                 </td>
                 <td>
-                    <form action="{{}}" method="post">
+                    <form action="{{route('route.approve',['id'=>$data['opid']])}}" method="post">
                         @csrf
                         <input class="btn btn-success" type="submit" value="Approve">
                     </form>

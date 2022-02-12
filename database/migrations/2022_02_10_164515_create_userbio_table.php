@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('userbio', function (Blueprint $table) {
             $table->id('uid');   
-            $table->string('university');
-            $table->integer('point',0);
+            $table->string('university')->nullable();
+            $table->integer('point')->default(0);
             $table->string('id');
             $table->timestamps();
         });

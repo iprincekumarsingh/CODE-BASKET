@@ -19,12 +19,15 @@ return new class extends Migration
             $table->string('user_role_type')->default('user');
             $table->string('username')->nullable();
             $table->string('email')->unique();
+            $table->string('university')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('country')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('approved')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

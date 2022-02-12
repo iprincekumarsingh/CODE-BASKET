@@ -6,11 +6,6 @@ use App\Http\Controllers\OppurtunitiesController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WebController;
-use App\Models\Opportunitie;
-use App\Models\Opportunities_category;
-use App\Models\Project;
-use App\Models\ProjectCategory;
-use App\Models\User;
 
 use Illuminate\Support\Facades\Route;
 
@@ -35,14 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/disapprove/{id}', [OppurtunitiesController::class, 'disapprove'])->name('route.disapprove');
     Route::post('/deleteoppurtunity/{id}', [OppurtunitiesController::class, 'destroy'])->name('oppur.destroy');
 
-
-
-
     // Project Controller for uploading project & viewing the project 
     Route::post('/proc_store', [ProjectCategoryController::class, 'store'])->name('projectCa.store');
     Route::get('/project_c_create', [ProjectCategoryController::class, 'index'])->name('projectCa.create');
     Route::get('/project_c_delete/{id}', [ProjectCategoryController::class, 'destroy'])->name('projectCa.destroy');
-
 
     // Project Controller 
     Route::get('/project_create', [ProjectController::class, 'index'])->name('project_index');

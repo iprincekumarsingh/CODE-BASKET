@@ -12,8 +12,7 @@ class WebController extends Controller
     public function index()
     {
         # code...
-        $msg = "WEB APP ON BUILD";
-    return view('web.home')->with(compact('msg'));
+        return view('web.index');
 
     }
     public function expore()

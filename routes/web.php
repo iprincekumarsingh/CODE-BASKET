@@ -9,9 +9,11 @@ use App\Http\Controllers\WebController;
 
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [WebController::class, 'index']);
-Route::get('/welcome', [Controller::class, 'home'])->name('home');
+ROute::get('/',function(){
+    return "Working on Heroku";
+});
+// Route::get('/', [WebController::class, 'index']);
+// Route::get('/welcome', [Controller::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard View with Contrller Class

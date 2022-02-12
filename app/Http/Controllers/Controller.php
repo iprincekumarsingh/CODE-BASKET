@@ -16,11 +16,11 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function home()
-    {
-        # code...
-        return view('web.home');
-    }
+    // public function home()
+    // {
+    //     # code...
+    //     return view('web.home');
+    // }
 
     public function approval()
     {

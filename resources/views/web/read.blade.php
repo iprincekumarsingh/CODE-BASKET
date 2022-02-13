@@ -15,13 +15,17 @@
         <br>
 
         @foreach ($read as $reads )
-       
-        <img style="align-content: center"  width="100%" height="493px" src="{{url('upload/oppurtunity/'.$reads->post_photo1)}}">
+        @if ($reads->post_photo1==null)
+
+        @else
+        <img style="align-content: center" width="100%" height="493px"
+            src="{{url('upload/oppurtunity/'.$reads->post_photo1)}}">
+        @endif
 
         <h1>{{$reads->name}}</h1>
         <span>Posted on -<b>{{date('d M Y', strtotime($reads->created_at))}}</b></span>
         <hr>
-        <p>{{$reads->description}}</p>
+        <pre style="font-family: 'Times New Roman', Times, serif; font-weight:600" >{{$reads->description}}</pre>
         <hr>
         @if ($reads->link=="")
         @else

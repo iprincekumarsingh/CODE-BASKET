@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('test', [WebController::class, 'test']);
     Route::get('/explore', [WebController::class, 'explore']);
     Route::get('/team', [WebController::class, 'team']);
-    Route::get('/explore/{randomString}/{id}/{no}', [WebController::class, 'exploreSeacrh'])->name('web.explore');
+    Route::get('/explore/{randomString}/{id}/{no?}', [WebController::class, 'exploreSeacrh'])->name('web.explore');
     Route::get('/women/{randomString}/{id}/{no}', [WebController::class, 'womensearch'])->name('women.explore');
 
     Route::get('/content/{id}', [WebController::class, 'readmore'])->name('read.more');

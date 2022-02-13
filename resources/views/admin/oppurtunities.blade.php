@@ -30,9 +30,9 @@
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1">
                         </div>
                         <div class="u-form-group u-form-name u-label-top">
-                            <label for="name-5a1e" class="u-label">Url Link</label>
-                            <input type="text" placeholder="Enter Url of link" id="name-5a1e" name="desc"
-                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1">
+                            <label for="name-5a1e" class="u-label">Description</label>
+                            <textarea type="text" placeholder="Enter Url of link" id="name-5a1e" name="desc"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1"></textarea>
                         </div>
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Url Link</label>
@@ -47,7 +47,7 @@
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Image(1) *</label>
                             <input type="file" placeholder="Enter Cateogry Name" id="name-5a1e" name="image"
-                                required="required"
+                            
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1">
                         </div>
 

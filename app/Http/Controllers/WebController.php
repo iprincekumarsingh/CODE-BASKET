@@ -27,13 +27,19 @@ class WebController extends Controller
     }
     public function exploreSeacrh($random, $id, $no)
     {
-        $search = Opportunitie::where('op_id', $id)
-            ->where('isForAll', 1)
-            ->get();
+        if ($no == 0) {
+            $search = Opportunitie::where('op_id', $id)
+                ->where('isForwomen', $no)
+                ->get();
+            // ->get();
+            return view('web.content')->with(compact('search', 'no','id'));
+        } else {
+            $search = Opportunitie::where('op_id', $id)
+                ->where('isForAll', $no)
+                ->get();
+            return view('web.content')->with(compact('search', 'no','id'));
+        }
 
-
-        // ->get();
-        return view('web.content')->with(compact('search', 'no'));
         // $search_new = Opportunitie::join('opportunities_category','opportunitie.op_id','opportunities_category.op_id')
         // ->where('op_id',$id)->get();  
         // return response()->json([$search_new]);

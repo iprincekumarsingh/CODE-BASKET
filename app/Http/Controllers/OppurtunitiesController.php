@@ -46,17 +46,20 @@ class OppurtunitiesController extends Controller
         $request->validate([
             'op_name' => 'required',
             'desc' => 'required',
-            'url_link' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+           
 
         ]);
 
+       if($request['file']==null){
+
+       }
+       else{
         $img = $request->file('image');
         $ext = $img->getClientOriginalExtension();
         $file_name = time() . '.' . $ext;
 
         $img->move('upload/oppurtunity/', $file_name);
-
+       }
 
 
         $data = new Opportunitie;
@@ -67,7 +70,7 @@ class OppurtunitiesController extends Controller
         $data->op_id = $request['op_id'];
         $data->isForAll = $request['all'];
         $data->isForwomen = $request['women'];
-        $data->post_photo1 = $file_name;
+       
         if (Auth::user()->user_role_type == "user") {
             // if the user upload the resources
             $data->uploaded_by_role = 1;
@@ -80,6 +83,7 @@ class OppurtunitiesController extends Controller
             $file_name2 = time() . '.' . $ext2;
             $img2->move('upload/oppurtunity/', $file_name2);
             $data->post_photo2 = $file_name2;
+            $data->post_photo1 = $file_name;
         }
         $data->aid = session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
         $data->post_id = rand(2, 999999);;

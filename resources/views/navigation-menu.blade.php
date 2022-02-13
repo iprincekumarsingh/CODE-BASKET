@@ -11,8 +11,12 @@
                         <H1 style="font-size: 2rem;font-weight:800">ProtoType</H1>
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('web.home') }}" :active="request()->routeIs('web.home')">
+                        {{ __('Home') }}
+                    </x-jet-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -25,12 +29,16 @@
                         {{ __('Add Category') }}
                     </x-jet-nav-link>
                 </div>
+                @endif
+                {{-- @ --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('oppurtunity.create') }}"
                         :active="request()->routeIs('oppurtunity.create')">
                         {{ __('Create Oppurtunities') }}
                     </x-jet-nav-link>
                 </div>
+                @if (Auth::user()->user_role_type=="admin")
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('projectCa.create') }}"
                         :active="request()->routeIs('projectCa.create')">
@@ -204,7 +212,7 @@
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
-            
+
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->

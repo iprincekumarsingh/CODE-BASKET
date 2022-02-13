@@ -10,8 +10,10 @@
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <div class="lightbar"></div>
           <div class="toplayer"></div>
-          <h1>Let us join hands and grow together</h1>
-          <h2>Providing you with a platform of all in one place!</h2>
+          {{-- <h1>Let us join hands and grow together</h1> --}}
+          <h1>{{"Experience the world of code !"}}</h1>
+          {{-- <h2>Providing you with a platform of all in one place!</h2> --}}
+          <h2>Learn, Explore, Create and Achieve</h2>
           <div><a href="{{url('/explore')}}" class="btn-get-started scrollto">Explore</a></div>
         </div>
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
@@ -53,30 +55,28 @@
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
+    <section  style="align-content: center ; display:flex; justify-content:space-between" id="counts" class="counts">
       <div class="container">
 
         <div class="row counters">
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-3 col-4 text-center">
             <span data-purecounter-start="0" data-purecounter-end="1432" data-purecounter-duration="1"
               class="purecounter"></span>
             <p>Contributions</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-3 col-4 text-center">
             <span data-purecounter-start="0" data-purecounter-end="125" data-purecounter-duration="1"
               class="purecounter"></span>
             <p>Active</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-2 col-4 text-center">
             <span data-purecounter-start="0" data-purecounter-end="34" data-purecounter-duration="1"
               class="purecounter"></span>
             <p>Contributors</p>
           </div>
-
-
 
         </div>
 
@@ -93,19 +93,26 @@
         </div>
 
         <div class="row gy-4">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-blue">
-              <img src="assets/img/oppors.webp" alt="">
+              <img src="{{url('frontend/assets/img/oppors.webp')}}" alt="">
 
               <div></div>
               <h4><a href="explore.html">OPPORTUNITIES</a></h4>
               <p>Explore opportunites for different level of schools.</p>
             </div>
-          </div>
+          </div> --}}
 
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-orange ">
+              <img src="{{url('frontend/assets/img/oppors.webp')}}" alt="">
+              <h4><a href="explore.html">OPPORTUNITIES</a></h4>
+              <p>Explore opportunites for different level of schools.</p>
+            </div>
+          </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox-orange ">
-              <img src="assets/img/res.png" alt="">
+              <img src="{{url('frontend/assets/img/res.png')}}" alt="">
               <h4><a href="explore.html">RESOURCES</a></h4>
               <p>From useful chrome extensions to technology resources , find everything here.</p>
             </div>
@@ -113,7 +120,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box iconbox-pink">
-              <img src="assets/img/finance.jpg" alt="">
+              <img src="{{url('frontend/assets/img/finance.jpg')}}" alt="">
               <h4><a href="explore.html">FINANCIAL AIDS</a></h4>
               <p>Find fellowship and scholarships and various financial aids here!</p>
             </div>
@@ -121,7 +128,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-yellow">
-              <img src="assets/img/games.jpg" alt="">
+              <img src="{{url('frontend/assets/img/games.jpg"')}}' alt="">
               <h4><a href="explore.html">PLAY AND CODE</a></h4>
               <p>Do you like practical works more than theories! Learn to think logically and code by playing games!/p>
             </div>
@@ -129,7 +136,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox-red">
-              <img src="assets/img/projects.jpg" alt="">
+              <img src="{{url('frontend/assets/img/projects.jpg')}}" alt="">
               <h4><a href="explore.html">PROJECTS</a></h4>
               <p>Want to create Projects using the tech stacks you know? Find various projects from beginner to advanced
                 level!</p>
@@ -166,7 +173,7 @@
 
                 </div>
                 <div class="image col-lg-6 order-1 order-lg-2 " data-aos="zoom-in" data-aos-delay="100">
-                  <img src="assets/img/features.svg" alt="" class="img-fluid">
+                  <img src="{{url('frontend/assets/img/features.svg')}}" alt="" class="img-fluid">
                 </div>
               </div>
 
@@ -268,9 +275,6 @@
               </div>
 
               <div class="row">
-
-
-
                 <div class="col-lg-6">
                   <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                     <div class="row">

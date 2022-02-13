@@ -36,26 +36,41 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+{{-- background: rgb(39 33 88 / 80%);/ --}}
+<style>
+  #header {
+    transition: all 0.5s;
+    z-index: 975;
+    padding: 12px 0;
+  }
+</style>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header  id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo">
-        <img src="assets/img/logo.png" alt="">
+        <img src="" alt="">
       </h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <a href="{{url('/')}}" class="logo"><img src="{{url('frontend/assets/img/logo2.png')}}" alt=""
+          class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{{url('/')}}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="team.html">Team</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/team')}}">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          @if (Auth::check())
+          <li><a class="getstarted scrollto" href="{{url('dashboard')}}">Dashboard</a></li>
+
+          @else
+          <li><a class="getstarted scrollto" href="{{url('login')}}">Login</a></li>
+
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

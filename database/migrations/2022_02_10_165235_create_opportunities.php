@@ -27,6 +27,10 @@ return new class extends Migration
             $table->string('post_photo3')->nullable();
             $table->string('op_id');
             $table->string('aid');
+            $table->string('uploaded_by_role')->nullable();
+            $table->string('isForAll')->nullable();
+            $table->string('isForwomen')->nullable();
+
             $table->string('post_id')->unique();
             $table->string('approved')->default(1);
             $table->softDeletes();

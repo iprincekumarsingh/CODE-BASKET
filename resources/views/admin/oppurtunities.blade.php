@@ -59,6 +59,15 @@
                         </div>
 
                         <div class="u-form-group u-label-top u-form-group-2">
+                            <label for="text-37e4" class="u-label">Is For Women</label>
+                            <input type="checkbox" id="vehicle1" name="women" value="0">
+                        </div>
+                        <div class="u-form-group u-label-top u-form-group-2">
+                            <label for="text-37e4" class="u-label">Or For All</label>
+                            <input type="checkbox" id="vehicle1" name="all" value="1">
+                        </div>
+
+                        <div class="u-form-group u-label-top u-form-group-2">
                             <label for="text-37e4" class="u-label">Choose Categories</label>
 
                             <select name="op_id"
@@ -81,6 +90,7 @@
                 </div>
             </div>
         </section>
+        @if (Auth::user()->user_role_type=="admin")
         <table class="table">
             <thead>
                 <tr>
@@ -129,5 +139,6 @@
 
             </tbody>
         </table>
+        @endif
 
 </x-app-layout>

@@ -16,23 +16,24 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function home()
-    {
-        # code...
-        return view('web.home');
-    }
+    // public function home()
+    // {
+    //     # code...
+    //     return view('web.home');
+    // }
 
-    public function approval()
-    {
-        $approve = Opportunitie::where('approved', 0)->get();
-
-        // return response()->json([$approve])
-        return view('admin.approval')->with(compact('approve'));
-        // return view('admin.approval');
-    }
+   
 
     public function dashboard()
     {
+        // to show user submission is approved or not
+        //  Opportunities_category::select('name', 'op_id')->get();
+        $cat = Opportunitie::where('aid', session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d'))
+            ->where('uploaded_by_role', 1)
+            ->get();
+
+
+
         $catid = Opportunities_category::select('op_id', 'name')->get();
         $ccuser = User::select('id')->get();
         $project = Project::select('project_id')->get();
@@ -50,6 +51,6 @@ class Controller extends BaseController
         $opp = Opportunitie::select('op_id')->get();
         $num = count($catid);
         $num2 = count($opp);
-        return view('dashboard')->with(compact('num', 'num2', 'catid', 'userid', 'projectCount', 'game', 'studentAid', 'approved'));
+        return view('dashboard')->with(compact('num', 'num2', 'catid', 'userid', 'projectCount', 'game', 'studentAid', 'approved', 'cat'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Opportunitie;
 use App\Models\Opportunities_category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Nette\Utils\Random;
 
 class OppurtunitiesController extends Controller
@@ -64,8 +65,14 @@ class OppurtunitiesController extends Controller
         $data->link = $request['url_link'];
         $data->link2 = $request['url_link2'];
         $data->op_id = $request['op_id'];
+        $data->isForAll = $request['all'];
+        $data->isForwomen = $request['women'];
         $data->post_photo1 = $file_name;
-
+        if (Auth::user()->user_role_type == "user") {
+            // if the user upload the resources
+            $data->uploaded_by_role = 1;
+            $data->approved = 0;
+        }
         if ($request['image2'] == null) {
         } else {
             $img2 = $request->file('image2');
@@ -88,6 +95,14 @@ class OppurtunitiesController extends Controller
      */
     public function show($id)
     {
+    }
+    public function approval()
+    {
+        $approve = Opportunitie::where('approved', 0)->get();
+
+        // return response()->json([$approve])
+        return view('admin.approval')->with(compact('approve'));
+        // return view('admin.approval');
     }
 
     // Approve || disapprove function

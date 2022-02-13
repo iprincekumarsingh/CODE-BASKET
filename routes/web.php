@@ -13,6 +13,7 @@ ROute::get('/',function(){
     return "Working on Heroku";
 });
 Route::get('/', [WebController::class, 'index']);
+Route::get('/explore', [WebController::class, 'explore']);
 // Route::get('/welcome', [Controller::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {

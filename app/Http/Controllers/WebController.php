@@ -15,14 +15,9 @@ class WebController extends Controller
         return view('web.index');
 
     }
-    // public function expore()
-    // {
-    //     // $explore = Opportunities_category::where('')
-    // }
+    public function explore()
+    {
+        return  view('web.explore');
+    }
 
-    // // admin Dashboard Frontend
-    // public function content($id)
-    // {
-    // //    $content = 
-    // }
-}
+}   

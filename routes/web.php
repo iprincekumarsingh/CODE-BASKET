@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 ROute::get('/',function(){
     return "Working on Heroku";
 });
-// Route::get('/', [WebController::class, 'index']);
+Route::get('/', [WebController::class, 'index']);
 // Route::get('/welcome', [Controller::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {

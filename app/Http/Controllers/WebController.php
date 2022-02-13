@@ -9,12 +9,12 @@ class WebController extends Controller
 {
     //
 
-    // public function index()
-    // {
-    //     # code...
-    //     return view('web.index');
+    public function index()
+    {
+        # code...
+        return view('web.index');
 
-    // }
+    }
     // public function expore()
     // {
     //     // $explore = Opportunities_category::where('')

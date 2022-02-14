@@ -32,8 +32,6 @@ class Controller extends BaseController
             ->where('uploaded_by_role', 1)
             ->get();
 
-
-
         $catid = Opportunities_category::select('op_id', 'name')->get();
         $ccuser = User::select('id')->get();
         $project = Project::select('project_id')->get();

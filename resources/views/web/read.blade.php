@@ -25,11 +25,15 @@
         <h1>{{$reads->name}}</h1>
         <span>Posted on -<b>{{date('d M Y', strtotime($reads->created_at))}}</b></span>
         <hr>
-        <pre style="font-family: 'Times New Roman', Times, serif; font-weight:600" >{{$reads->description}}</pre>
-        <hr>
+     
+           <div style="font-size: 18px">
+
+               {!! html_entity_decode($reads->description, ENT_QUOTES, 'UTF-8') !!}
+               </div> 
+    
         @if ($reads->link=="")
         @else
-        <strong> <span style="color: blue;font-size:2rem"><a style="color: rgb(96, 96, 194)"
+        <strong> <span  style="color: blue;font-size:2rem"><a style="color: rgb(96, 96, 194)"
                     href="{{$reads->link}}">Visit</a></span></strong>
         @endif
         @endforeach

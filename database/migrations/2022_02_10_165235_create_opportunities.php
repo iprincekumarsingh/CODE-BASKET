@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id('opid');
             $table->string('name');
             $table->text('description');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->string('link2')->nullable();
             $table->string('link3')->nullable();
             $table->string('link4')->nullable();
-            $table->string('post_photo1');
+            $table->string('post_photo1')->nullable();
             $table->string('post_photo2')->nullable();
             $table->string('post_photo4')->nullable();
             $table->string('post_photo3')->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('uploaded_by_role')->nullable();
             $table->string('isForAll')->nullable();
             $table->string('isForwomen')->nullable();
-
+            $table->string('parent_id')->nullable();
             $table->string('post_id')->unique();
             $table->string('approved')->default(1);
             $table->softDeletes();

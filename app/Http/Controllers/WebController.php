@@ -25,20 +25,14 @@ class WebController extends Controller
     {
         return view('web.team');
     }
-    public function exploreSeacrh($random, $id, $no)
+    public function exploreSeacrh( $id,$pageno)
     {
-        if ($no == 0) {
+    //    else {
             $search = Opportunitie::where('op_id', $id)
-                ->where('isForwomen', $no)
+                ->where('isForAll', 1)
                 ->get();
-            // ->get();
-            return view('web.content')->with(compact('search', 'no','id'));
-        } else {
-            $search = Opportunitie::where('op_id', $id)
-                ->where('isForAll', $no)
-                ->get();
-            return view('web.content')->with(compact('search', 'no','id'));
-        }
+            return view('web.content')->with(compact('search', 'id','pageno'));
+        // }
 
         // $search_new = Opportunitie::join('opportunities_category','opportunitie.op_id','opportunities_category.op_id')
         // ->where('op_id',$id)->get();  
@@ -47,7 +41,7 @@ class WebController extends Controller
     public function womensearch($random, $id, $no)
     {
         $search = Opportunitie::where('op_id', $id)
-            ->where('isForwomen', 0)
+            ->where('isForwomen', $no)
             ->get();
 
 

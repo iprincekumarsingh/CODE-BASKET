@@ -14,7 +14,7 @@
     Route::get('test', [WebController::class, 'test']);
     Route::get('/explore', [WebController::class, 'explore']);
     Route::get('/team', [WebController::class, 'team']);
-    Route::get('/explore-content/{id}/{pageno}', [WebController::class, 'exploreSeacrh'])->name('web.explore');
+    Route::get('/explore-content/{id}/{pageno?}', [WebController::class, 'exploreSeacrh'])->name('web.explore');
     Route::get('/women/{id}', [WebController::class, 'womensearch'])->name('women.explore');
 
     Route::get('/content/{id}', [WebController::class, 'readmore'])->name('read.more');

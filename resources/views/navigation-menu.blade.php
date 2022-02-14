@@ -8,7 +8,8 @@
                     <a href="{{ route('dashboard') }}">
                         {{--
                         <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                        <H1 style="font-size: 2rem;font-weight:800">ProtoType</H1>
+                        <H1 style="font-size: 2rem;font-weight:800"><img src="{{url('frontend/assets/img/logo2.png')}}" alt=""
+                            class="block h-10 w-auto" ></H1>
                     </a>
                 </div>
                 <!-- Navigation Links -->

@@ -46,20 +46,17 @@ class OppurtunitiesController extends Controller
         $request->validate([
             'op_name' => 'required',
             'desc' => 'required',
+            'image'=>'required',
            
 
         ]);
 
-       if($request['file']==null){
-
-       }
-       else{
         $img = $request->file('image');
         $ext = $img->getClientOriginalExtension();
         $file_name = time() . '.' . $ext;
 
         $img->move('upload/oppurtunity/', $file_name);
-       }
+       
 
 
         $data = new Opportunitie;
@@ -83,10 +80,10 @@ class OppurtunitiesController extends Controller
             $file_name2 = time() . '.' . $ext2;
             $img2->move('upload/oppurtunity/', $file_name2);
             $data->post_photo2 = $file_name2;
-            $data->post_photo1 = $file_name;
         }
+        $data->post_photo1 = $file_name;
         $data->aid = session('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
-        $data->post_id = rand(2, 999999);;
+        $data->post_id = rand(2, 9999999);;
         $data->save();
         return to_route('oppurtunity.create');
     }

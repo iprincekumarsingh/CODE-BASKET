@@ -21,18 +21,24 @@
                         class="u-clearfix u-form-spacing-16 u-form-vertical u-inner-form" source="custom" name="form"
                         style="padding: 4px;">
                         @csrf
-                        @if($errors->any())
-                        {{ implode('', $errors->all('<div>:message</div>')) }}
-                        @endif
+
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Oppurtunites Name</label>
                             <input type="text" placeholder="Enter Cateogry Name" id="name-5a1e" name="op_name"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1">
+                                <br>
+                                @if($errors->has('op_name'))
+                                <div class="alert alert-danger">{{ $errors->first('op_name') }}</div>
+                                @endif
                         </div>
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Description</label>
                             <textarea type="text" placeholder="Enter Url of link" id="name-5a1e" name="desc"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1"></textarea>
+                                <br>
+                                @if($errors->has('desc'))
+                                <div class="alert alert-danger">{{ $errors->first('desc') }}</div>
+                                @endif
                         </div>
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Url Link</label>
@@ -47,8 +53,11 @@
                         <div class="u-form-group u-form-name u-label-top">
                             <label for="name-5a1e" class="u-label">Image(1) *</label>
                             <input type="file" placeholder="Enter Cateogry Name" id="name-5a1e" name="image"
-                            
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-12 u-white u-input-1">
+                            <br>
+                            @if($errors->has('image'))
+                            <div class="alert alert-danger">{{ $errors->first('image') }}</div>
+                            @endif
                         </div>
 
                         <div class="u-form-group u-label-top u-form-group-2">

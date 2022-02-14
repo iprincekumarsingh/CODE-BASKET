@@ -45,7 +45,7 @@
               <li><i class="bi bi-check-circle"></i>Resources in one place for different domains.</li>
               <li><i class="bi bi-check-circle"></i>A corner to find games helping to learn people of all age about
                 logical coding</li>
-              <li><i class="bi bi-check-circle"></i>A corner to find student aids in one place!</li>
+              {{-- <li><i class="bi bi-check-circle"></i>A corner to find student aids in one place!</li> --}}
             </ul>
             <a href="#services" class="read-more">Read More <i class="bi bi-long-arrow-right"></i></a>
           </div>
@@ -118,17 +118,17 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box iconbox-pink">
               <img src="{{url('frontend/assets/img/finance.jpg')}}" alt="">
               <h4><a href="explore.html">FINANCIAL AIDS</a></h4>
               <p>Find fellowship and scholarships and various financial aids here!</p>
             </div>
-          </div>
+          </div> --}}
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-yellow">
-              <img src="{{url('frontend/assets/img/games.jpg"')}}' alt="">
+              <img src="{{url('frontend/assets/img/games.jpg')}}" alt="">
               <h4><a href="explore.html">PLAY AND CODE</a></h4>
               <p>Do you like practical works more than theories! Learn to think logically and code by playing games!/p>
             </div>

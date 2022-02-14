@@ -29,12 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="{{url('frontend/assets/css/style.css')}}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Techie - v4.7.0
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+ 
 </head>
 {{-- background: rgb(39 33 88 / 80%);/ --}}
 <style>

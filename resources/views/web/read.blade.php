@@ -47,8 +47,8 @@
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo">
         <a href="index.html">
-          <img src="assets/img/logo.png" alt="" />
-        </a>
+          <a href="{{url('/')}}" class="logo"><img src="{{url('frontend/assets/img/logo2.png')}}" alt=""
+            class="img-fluid"></a>         </a>
       </h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->

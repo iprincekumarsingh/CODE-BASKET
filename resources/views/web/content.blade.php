@@ -29,12 +29,6 @@
   <!-- Template Main CSS File -->
   <link href="http://127.0.0.1:8000/frontend/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Techie - v4.7.0
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <style>
@@ -46,12 +40,10 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo">
-        <a href="index.html">
-          <img src="assets/img/logo.png" alt="" />
-        </a>
+        <a href="{{url('/')}}" class="logo"><img src="{{url('frontend/assets/img/logo2.png')}}" alt=""
+            class="img-fluid"></a>
       </h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -69,73 +61,79 @@
       <!-- .navbar -->
     </div>
   </header>
-<style>
+  <style>
     /* .uu {
         padding: 10px;
         margin: 5px;
     } */
     .uf {
-        display: flex;
-        flex-wrap: wrap
+      display: flex;
+      flex-wrap: wrap
     }
 
     .u {
-        padding: 10px;
+      padding: 10px;
     }
 
     .ub {
-        align-items: flex-end width: 200px
+      align-items: flex-end width: 200px
     }
-</style>
-<!-- End Breadcrumbs -->
-<?php
+  </style>
+  <!-- End Breadcrumbs -->
+  <?php
       $randomString = Str::random(30)
       ?>
-<section class="inner-page ">
+  <section class="inner-page ">
     <div class="container">
-        <a href="{{route('fortify.register')}}" style="--clr:#ff22bb;--i:0;"><Span>Contribute here !</Span></a>
+      <a href="{{route('fortify.register')}}" style="--clr:#ff22bb;--i:0;"><Span>Contribute here !</Span></a>
+
+      @isset($pageno)
+
+      @if ($pageno==0)
+
+      <a href="{{route('women.explore',['id'=>1])}}" style="--clr:#ff22bb;--i:0;"><Span>OPPORTUNITIES FOR
+          WOMEN</Span></a>
 
 
-        @if ($pageno==0)
-        <a href="{{route('women.explore',['randomString'=>$randomString,'id'=>1,'no'=>'0'])}}"
-            style="--clr:#ff22bb;--i:0;"><Span>OPPORTUNITIES FOR WOMEN</Span></a>
-        @endif
+
+      @endif
+      @endisset
     </div>
 
     <div class="row u ">
-        @foreach ($search as $result)
+      @foreach ($search as $result)
 
-        <div class="col-md-4 col-sm-4 col-xs-12 u">
-            <div style="margin: 5px; border:1px solid rgba(212, 212, 212, 0.712); padding:10px;border-radius:10px"
-                class="row section-success  text-center">
-                <div class="col-md-12 section1">
-                    @if ($result->post_photo1==null)
-                    <img style="border-radius: 0px; width:455px;height:270px"
-                        src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191105192037/What-Are-The-Best-Resources-For-Competitive-Programming.png">
-                    @else
+      <div class="col-md-4 col-sm-4 col-xs-12 u">
+        <div style="margin: 5px; border:1px solid rgba(212, 212, 212, 0.712); padding:10px;border-radius:10px"
+          class="row section-success  text-center">
+          <div class="col-md-12 section1">
+            @if ($result->post_photo1==null)
+            <img style="border-radius: 0px; width:455px;height:270px"
+              src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191105192037/What-Are-The-Best-Resources-For-Competitive-Programming.png">
+            @else
 
-                    <img style="border-radius: 0px; width:455px;height:270px"
-                        src="{{url('/upload/oppurtunity/'.$result->post_photo1)}}">
-                    @endif
+            <img style="border-radius: 0px; width:455px;height:270px"
+              src="{{url('/upload/oppurtunity/'.$result->post_photo1)}}">
+            @endif
 
 
-                </div>
-                <div class="col-md-12 section2 pb-3">
-                    <p>{{$result->name}}</p>
-                    {{-- {{$result- >description}} --}}
+          </div>
+          <div class="col-md-12 section2 pb-3">
+            <p>{{$result->name}}</p>
+            {{-- {{$result- >description}} --}}
 
-                </div>
+          </div>
 
-                <a href="{{route('read.more',['id'=>$result->opid])}}" class=" ub btn btn-primary">Read More</a>
-            </div>
+          <a href="{{route('read.more',['id'=>$result->opid])}}" class=" ub btn btn-primary">View</a>
         </div>
-        @endforeach
+      </div>
+      @endforeach
 
 
     </div>
-</section>
-{{-- !-- ======= Footer ======= --> --}}
-<footer id="footer">
+  </section>
+  {{-- !-- ======= Footer ======= --> --}}
+  <footer id="footer">
 
     <div class="footer-top">
       <div class="container">
@@ -178,7 +176,8 @@
             <h4>Join Our Newsletter</h4>
             <p>Stay updated with application dates and new Opportunities</p>
             <form action="http://127.0.0.1:8000/news" method="post">
-              <input type="hidden" name="_token" value="318PtJcRX3Yt9wNeRvTI5AUQn1L9wo0z2uWRm9hg">              <input type="email" name="email">
+              <input type="hidden" name="_token" value="318PtJcRX3Yt9wNeRvTI5AUQn1L9wo0z2uWRm9hg"> <input type="email"
+                name="email">
               <input type="submit" value="Subscribe">
             </form>
           </div>

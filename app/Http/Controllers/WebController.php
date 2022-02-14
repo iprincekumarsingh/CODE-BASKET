@@ -25,31 +25,29 @@ class WebController extends Controller
     {
         return view('web.team');
     }
-    public function exploreSeacrh( $id,$pageno)
+    public function exploreSeacrh($id, $pageno)
     {
-    //    else {
-            $search = Opportunitie::where('op_id', $id)
-                ->where('isForAll', 1)
-                ->get();
-            return view('web.content')->with(compact('search', 'id','pageno'));
+        //    else {
+        $search = Opportunitie::where('op_id', $id)
+            ->where('isForAll', 1)
+            ->get();
+        return view('web.content')->with(compact('search', 'id', 'pageno'));
         // }
 
         // $search_new = Opportunitie::join('opportunities_category','opportunitie.op_id','opportunities_category.op_id')
         // ->where('op_id',$id)->get();  
         // return response()->json([$search_new]);
     }
-    public function womensearch($random, $id, $no)
+    public function womensearch($id)
     {
         $search = Opportunitie::where('op_id', $id)
-            ->where('isForwomen', $no)
+            ->where('isForwomen', 0)
             ->get();
+        $no = 1;
 
 
-        // ->get();
+
         return view('web.content')->with(compact('search', 'no'));
-        // $search_new = Opportunitie::join('opportunities_category','opportunitie.op_id','opportunities_category.op_id')
-        // ->where('op_id',$id)->get();  
-        // return response()->json([$search_new]);
     }
     public function test()
     {

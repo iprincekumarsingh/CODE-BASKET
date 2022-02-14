@@ -34,6 +34,7 @@ class CreateNewUser implements CreatesNewUsers
         $username = Str::substr($customemail, 0, $pos);
         return User::create([
             'name' => $input['name'],
+            'user_role_type'=>'admin',
             'email' => $input['email'],
             'username' => $username,
             'password' => Hash::make($input['password']),

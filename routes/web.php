@@ -47,5 +47,5 @@
 
         Route::get('/project_create', [ProjectController::class, 'index'])->name('project_index');
         Route::post('/project_create', [ProjectController::class, 'store'])->name('project_store');
-        // <!-- Orga -->
+        
     });
